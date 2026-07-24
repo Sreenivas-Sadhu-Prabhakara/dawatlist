@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="/dawatlist/">
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="How much rice for 100 people? Turn a guest count and a menu into market-ready kilograms — rice, dal, oil, paneer — with an editable buffer, optional prices, and a printable shopping list. Free, private, offline. This demo stores nothing.">
+
+  <meta property="og:title" content="How Much Rice for 100 People? — dawatlist feast calculator">
+  <meta property="og:description" content="Guest count in, kilograms out: rice, dal, oil, paneer for a bhandara, langar or wedding, with a printable market list. Free and private.">
+  <meta property="og:type" content="website">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="dawatlist">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <link rel="icon" type="image/png" href="favicon.png"/>
+  <title>How Much Rice for 100 People? Feast Quantities in Kilograms — dawatlist</title>
+  <link rel="manifest" href="manifest.json">
+
+  <style>
+    :root { color-scheme: light dark; }
+    body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif; }
+    #seo-landing { max-width: 760px; margin: 0 auto; padding: 24px 20px 8px; line-height: 1.55;
+      color: #1F3A2C; background: #FAF6EC; }
+    #seo-landing h1 { font-size: 1.5rem; color: #A84A0C; margin: 0 0 8px; }
+    #seo-landing h2 { font-size: 1.05rem; margin: 20px 0 6px; color: #2E6B3F; }
+    #seo-landing code { background: rgba(0,0,0,0.06); padding: 1px 5px; border-radius: 4px;
+      font-feature-settings: "tnum"; }
+    #seo-landing table { border-collapse: collapse; width: 100%; overflow-x: auto; display: block; }
+    #seo-landing th, #seo-landing td { text-align: left; padding: 4px 10px 4px 0; font-feature-settings: "tnum"; }
+    #seo-landing .note { font-size: 0.85rem; color: #4E5D54; }
+    #flutter-app { height: 80vh; min-height: 480px; border-top: 3px solid #C8611A; }
+    @media (prefers-color-scheme: dark) {
+      #seo-landing { color: #F2EDDD; background: #101B14; }
+      #seo-landing h1 { color: #F0A868; }
+      #seo-landing h2 { color: #7FC08F; }
+      #seo-landing code { background: rgba(255,255,255,0.12); }
+      #seo-landing .note { color: #A8B8AE; }
+    }
+  </style>
+
+  <!-- Crawlable structured data: the Flutter canvas is not indexable, so the
+       facts live in real HTML + JSON-LD. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "dawatlist",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Web, Windows, macOS, Linux, Android, iOS",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
+    "description": "Turn a guest count and a menu into raw-material quantities in kilograms — rice, dal, oil, paneer — with an editable buffer, optional prices, and a printable market shopping list."
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much rice for 100 people?",
+        "acceptedAnswer": { "@type": "Answer", "text": "As a rice-main feast starting point, about 80–120 g of raw rice per person — roughly 8 to 12 kg for 100 people. dawatlist defaults to 100 g/person (10 kg), then adds a spare-food buffer (default +10%) and rounds up to a purchasable step, giving 11 kg. These are starting ranges, not authoritative numbers: appetite varies with region, season and how many other dishes share the plate, so edit the portion." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a bhandara ration list for 200 people?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Scale each per-person portion by 200 and round up. With dawatlist's editable presets that is roughly: rice 22 kg, atta 18 kg, toor/chana dal 5.5 kg, cooking oil 3.3 kg, paneer 8.8 kg, mixed vegetables 26 kg, plus onion, tomato, curd, milk, sugar and salt/spices — all raw purchase weights, with a +10% buffer and rounding. Every number is a starting range you can edit, and the app prints a market-ready list grouped by category." }
+      },
+      {
+        "@type": "Question",
+        "name": "How much dal for 50 guests?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Around 20–35 g of raw dal per person, so about 1 to 1.75 kg for 50 guests. dawatlist defaults to 25 g/person (1.25 kg) before the buffer and rounding. Thicker dals or dal as the main protein push this higher — adjust the portion to your menu." }
+      },
+      {
+        "@type": "Question",
+        "name": "Are these cooked or raw weights, and where do the numbers come from?",
+        "acceptedAnswer": { "@type": "Answer", "text": "All quantities are RAW purchase weights, not cooked yields. The shipped portions are editable presets shown as ranges; none is presented as an authoritative single figure. They ship labelled 'preset (uncited) — edit to taste' because public feast-quantity numbers vary widely and no single authoritative, fetchable source backs them; nutrition-guideline portions are a different thing and are not used as a source. Treat every number as a default to adjust." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my data private?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. The full app is local-first: your events live in a SQLite file on your own machine and the app runs on localhost. This web demo stores nothing on any server — everything you type stays in your browser tab and is gone when you close it." }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <main id="seo-landing">
+    <h1>How much rice for 100 people? Get the whole feast in kilograms.</h1>
+    <p><strong>dawatlist</strong> turns a guest count and a menu into raw-material
+    quantities — kilograms of <strong>rice, dal, oil, paneer</strong> and more —
+    with an editable buffer, optional ₹ prices, and a <strong>printable market
+    shopping list</strong>. Built for families self-catering a wedding, volunteers
+    running a bhandara or langar, and small home caterers pricing a dawat.</p>
+
+    <h2>How the calculation works</h2>
+    <p>For each item: <code>base = guests × portion</code>, then a spare-food
+    <code>buffer</code> is added and the result is <strong>rounded up</strong> to a
+    purchasable step (100 g / 250 g / 500 g / 1 kg) so you never under-buy.</p>
+    <p><em>Worked example — rice for 100 people:</em> 100 guests × 100 g =
+    <code>10 kg</code>; +10% buffer = <code>11 kg</code>; rounded up to the nearest
+    0.5 kg = <strong>11.0 kg</strong>. At <code>₹62/kg</code> that line costs
+    <code>₹682.00</code>.</p>
+
+    <h2>Starting portions (per person, raw) — ranges, not rules</h2>
+    <table>
+      <tr><th>Item</th><th>Range (g/person)</th><th>For 100 people</th></tr>
+      <tr><td>Rice (raw)</td><td>80–120 g</td><td>8–12 kg</td></tr>
+      <tr><td>Atta / wheat flour</td><td>60–100 g</td><td>6–10 kg</td></tr>
+      <tr><td>Toor / chana dal</td><td>20–35 g</td><td>2–3.5 kg</td></tr>
+      <tr><td>Cooking oil</td><td>10–20 g</td><td>1–2 kg</td></tr>
+      <tr><td>Paneer</td><td>25–50 g</td><td>2.5–5 kg</td></tr>
+      <tr><td>Mixed vegetables</td><td>100–150 g</td><td>10–15 kg</td></tr>
+    </table>
+    <p class="note">These are <strong>editable presets shown as ranges</strong> —
+    starting points for a rice-main feast, not authoritative numbers. They ship
+    labelled “preset (uncited) — edit to taste”; appetite varies with region,
+    season and how many dishes share the plate. Quantities are raw purchase
+    weights, not cooked yields. Not a food-safety or catering-compliance tool.</p>
+
+    <h2>Try it below</h2>
+    <p>The calculator below is loaded with a sample “Bhandara — 200 guests” list.
+    Change the guest count, edit portions, add prices, and print the market list —
+    nothing you type leaves this page.</p>
+  </main>
+
+  <div id="flutter-app"></div>
+
+  <script src="flutter.js" defer></script>
+  <script>
+    window.addEventListener('load', function () {
+      _flutter.loader.load({
+        onEntrypointLoaded: async function (engineInitializer) {
+          const appRunner = await engineInitializer.initializeEngine({
+            hostElement: document.getElementById('flutter-app')
+          });
+          await appRunner.runApp();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
